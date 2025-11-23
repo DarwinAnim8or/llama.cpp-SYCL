@@ -191,6 +191,7 @@ inline dpct::err0 ggml_sycl_set_device(const int device) try {
 //////////////////////
 struct optimize_feature {
     bool reorder=false;
+    bool has_fp16=false; //this got checked so often im adding it here for caching the result
 };
 
 struct sycl_device_info {
