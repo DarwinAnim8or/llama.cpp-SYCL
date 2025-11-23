@@ -95,6 +95,7 @@ static ggml_sycl_device_info ggml_sycl_init() {
             100 * prop.get_major_version() + 10 * prop.get_minor_version();
         info.devices[i].nsm = prop.get_max_compute_units();
         info.devices[i].opt_feature.reorder = false;  // Reorder optimization hurts Intel GPU performance
+        info.devices[i].opt_feature.has_fp16 = device.has(sycl::aspect::fp16); //cache whether or not we have fp16
         info.devices[i].smpbo = prop.get_local_mem_size();
 
         info.max_work_group_sizes[i] = prop.get_max_work_group_size();
